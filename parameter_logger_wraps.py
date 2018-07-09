@@ -6,7 +6,6 @@ from functools import wraps
 
 
 def measure_run_time(func):
-
     @wraps(func)
     def wrapper(*args, **kwargs):
         start = time.time()
@@ -18,8 +17,8 @@ def measure_run_time(func):
 
     return wrapper
 
-def parameter_logger(func):
 
+def parameter_logger(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -28,10 +27,12 @@ def parameter_logger(func):
 
     return wrapper
 
+
 @measure_run_time
 @parameter_logger
 def worker(delay_time):
     time.sleep(delay_time)
+
 
 if __name__ == "__main__":
     worker(5)

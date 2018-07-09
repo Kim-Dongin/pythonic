@@ -1,11 +1,10 @@
 #!/usr/local/bin/python3
 
-
 import time
 from functools import update_wrapper
 
-class MeasureRuntime:
 
+class MeasureRuntime:
     def __init__(self, f):
         self.func = f
         update_wrapper(self, self.func)
@@ -14,7 +13,8 @@ class MeasureRuntime:
         start = time.time()
         result = self.func(*args, **kwargs)
         end = time.time()
-        print("'%s' function running time : %s" % (self.func.__name__, end - start))
+        print("'%s' function running time : %s" % (self.func.__name__,
+                                                   end - start))
 
         return result
 
